@@ -1,13 +1,34 @@
 import React from "react";
-import Counter from "./components/Counter/Counter";
+import { Route, Redirect, Link } from "react-router-dom";
+import Login from "./components/Login/Login";
 import "./App.css";
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Counter />
-      </header>
+    <div>
+      <nav style={{ textAlign: "center", padding: "20px" }}>
+        <Link to="/home">Home</Link>
+        <Link to="/login">Login</Link>
+      </nav>
+
+      <Route
+        path="/"
+        render={() =>
+          localStorage.getItem("token") ? (
+            <div>
+              <h3>Logged in!</h3>
+            </div>
+          ) : (
+            <Redirect to="/login" />
+          )
+        }
+      />
+      <Route
+        path="/login"
+        render={() =>
+          localStorage.getItem("token") ? <Redirect to="/" /> : <Login />
+        }
+      />
     </div>
   );
 };
