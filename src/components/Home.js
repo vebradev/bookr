@@ -1,7 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { getBooks } from "../state/actionCreators";
 import BooksContainer from "./BooksContainer";
 
 class Home extends React.Component {
@@ -14,4 +11,4 @@ class Home extends React.Component {
   }
 }
 
-export default BooksContainer;
+export default Home;

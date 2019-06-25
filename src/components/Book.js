@@ -1,5 +1,4 @@
 import React from "react";
-import { booleanLiteral } from "@babel/types";
 
 class Book extends React.Component {
   render() {
