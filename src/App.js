@@ -1,36 +1,19 @@
 import React from "react";
-import { Route, Redirect, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+import PrivateRoute from "./auth/PrivateRoute";
+import Nav from "./components/Nav";
 import Login from "./components/Login/Login";
+import Home from "./components/Home";
 import "./App.css";
 
-const App = () => {
+function App() {
   return (
     <div>
-      <nav style={{ textAlign: "center", padding: "20px" }}>
-        <Link to="/home">Home</Link>
-        <Link to="/login">Login</Link>
-      </nav>
-
-      <Route
-        path="/"
-        render={() =>
-          localStorage.getItem("token") ? (
-            <div>
-              <h3>Logged in!</h3>
-            </div>
-          ) : (
-            <Redirect to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/login"
-        render={() =>
-          localStorage.getItem("token") ? <Redirect to="/" /> : <Login />
-        }
-      />
+      <Nav />
+      <Route path="/login" component={Login} />
+      <PrivateRoute exact path="/" component={Home} />
     </div>
   );
-};
+}
 
 export default App;

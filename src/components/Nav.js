@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
+  font-size: 1.5em;
   padding: 20px;
-  background-color: #3f51b5;
+  background-color: #064acb;
   color: #fff;
   font-family: "Roboto Mono", monospace;
 
@@ -15,7 +16,8 @@ const StyledNav = styled.nav`
     transition: all 0.3s;
 
     &:hover {
-      background-color: #002984;
+      background-color: #fff;
+      color: #064acb;
     }
   }
 
