@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
     justify-content: space-between;
 `;
 
-class Home extends React.Component {
+class BooksContainer extends React.Component {
   componentDidMount = () => {
     this.props.getBooks();
   };
@@ -52,4 +52,4 @@ const matchDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   matchDispatchToProps
-)(Home);
+)(BooksContainer);

@@ -4,6 +4,7 @@ import PrivateRoute from "./auth/PrivateRoute";
 import Nav from "./components/Nav";
 import Login from "./components/Login/Login";
 import Home from "./components/Home";
+import BookPage from "./components/BookPage";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Nav />
       <Route path="/login" component={Login} />
       <PrivateRoute exact path="/home" component={Home} />
+      <Route path="/book/:id" component={BookPage} />
     </div>
   );
 }
