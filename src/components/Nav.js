@@ -1,11 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   font-size: 1.5em;
   padding: 20px;
   background-color: #064acb;
+  border-bottom: 2px solid transparent;
   color: #fff;
   font-family: "Roboto Mono", monospace;
 
@@ -15,16 +19,14 @@ const StyledNav = styled.nav`
     padding: 10px 15px;
     transition: all 0.3s;
 
+    &.active {
+      background-color: #366ed8;
+    }
+
     &:hover {
       background-color: #fff;
       color: #064acb;
     }
-  }
-
-  ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
   }
 `;
 
@@ -32,14 +34,13 @@ class Nav extends React.Component {
   render() {
     return (
       <StyledNav>
-        <ul>
-          <li>
-            <Link to={"/"}>Home</Link>
-          </li>
-          <li>
-            <Link to={"/login"}>Login</Link>
-          </li>
-        </ul>
+        <NavLink to={"/home"} activeClassName="active">
+          Home
+        </NavLink>
+
+        <NavLink to={"/login"} activeClassName="active">
+          Login
+        </NavLink>
       </StyledNav>
     );
   }
