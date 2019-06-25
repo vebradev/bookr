@@ -1,8 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import styled from "styled-components";
 import { getBooks } from "../state/actionCreators";
 import Book from "./Book";
+
+const StyledDiv = styled.div`
+    padding: 20px;
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`;
 
 class Home extends React.Component {
   componentDidMount = () => {
@@ -15,11 +25,11 @@ class Home extends React.Component {
       return <div>Books being loaded. Stay put.</div>;
     }
     return (
-      <div>
+      <StyledDiv>
         {books.map(book => (
           <Book book={book} key={book.id} />
         ))}
-      </div>
+      </StyledDiv>
     );
   }
 }

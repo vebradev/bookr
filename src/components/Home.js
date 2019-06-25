@@ -1,12 +1,18 @@
 import React from "react";
+import styled from "styled-components";
 import BooksContainer from "./BooksContainer";
+
+const StyledDiv = styled.div`
+    max-width: 1000px;
+    margin: 0 auto;
+`;
 
 class Home extends React.Component {
   render() {
     return (
-      <div>
+      <StyledDiv>
         <BooksContainer />
-      </div>
+      </StyledDiv>
     );
   }
 }
