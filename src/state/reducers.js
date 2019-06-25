@@ -3,7 +3,8 @@ import * as types from "./actionTypes";
 const initialState = {
   books: [],
   isKnown: false,
-  error: ""
+  error: "",
+  gettingBooks: false
 };
 
 export const mainReducer = (state = initialState, action) => {
@@ -25,6 +26,26 @@ export const mainReducer = (state = initialState, action) => {
         ...state,
         isKnown: false
       };
+
+    case types.GET_BOOKS_TRY:
+      return {
+        ...state,
+        gettingBooks: true
+      };
+
+    case types.GET_BOOKS_SUCCESS:
+      return {
+        ...state,
+        books: action.payload,
+        gettingBooks: false
+      };
+
+    case types.GET_BOOKS_FAIL:
+      return {
+        ...state,
+        gettingBooks: false,
+        error: action.payload,
+      }
 
     default:
       return state;
