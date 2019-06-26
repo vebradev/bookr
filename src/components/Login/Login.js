@@ -1,7 +1,57 @@
 import React from "react";
 import { connect } from "react-redux";
-import { login } from "../../state/actionCreators";
+import Loader from "react-loader-spinner";
 import styled from "styled-components";
+
+import { login } from "../../state/actionCreators";
+
+class Login extends React.Component {
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      console.log("yra");
+    }
+  }
+
+  username = React.createRef();
+  password = React.createRef();
+
+  login = (e) => {
+    e.preventDefault();
+    const username = this.username.current.value;
+    const password = this.password.current.value;
+    this.props.login(username, password)
+      .then(res => {
+        // Put more effort here to figure out why RES is not defined here.
+        this.props.history.push('/');
+      })
+  };
+
+  render() {
+    return (
+      <StyledDiv>
+        <form onSubmit={this.login}>
+        <input placeholder="Username" type="text" ref={this.username} />
+        <input placeholder="Password" type="password" ref={this.password} />
+        <button>
+          {this.props.loggingIn ? (
+            <Loader type="ThreeDots" color="#fff" height="12" width="26" />
+          ) : (
+            "Log In"
+          )}
+        </button>
+        {/* <button onClick={() => localStorage.clear()}>Log out</button> */}
+        </form>
+      </StyledDiv>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  loggingIn: state.mainReducer.loggingIn,
+  error: state.mainReducer.error,
+})
+
+export default connect(mapStateToProps,{ login })(Login);
 
 const StyledDiv = styled.div`
   display: flex;
@@ -46,30 +96,3 @@ const StyledDiv = styled.div`
     }
   }
 `;
-
-export class Login extends React.Component {
-  username = React.createRef();
-  password = React.createRef();
-
-  onLogin = () => {
-    const username = this.username.current.value;
-    const password = this.password.current.value;
-    this.props.login(username, password);
-  };
-
-  render() {
-    return (
-      <StyledDiv>
-        <input placeholder="Username" type="text" ref={this.username} />
-        <input placeholder="Password" type="text" ref={this.password} />
-        <button onClick={this.onLogin}>Log in</button>
-        {/* <button onClick={() => localStorage.clear()}>Log out</button> */}
-      </StyledDiv>
-    );
-  }
-}
-
-export default connect(
-  state => state,
-  { login }
-)(Login);

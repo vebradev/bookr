@@ -1,6 +1,7 @@
 import * as types from "./actionTypes";
 
 const initialState = {
+  loggingIn: false,
   books: [],
   isKnown: false,
   error: "",
@@ -12,19 +13,21 @@ export const mainReducer = (state = initialState, action) => {
     case types.LOGIN_TRY:
       return {
         ...state,
-        isKnown: false
+        error: '',
+        loggingIn: true
       };
 
     case types.LOGIN_SUCCESS:
       return {
         ...state,
-        isKnown: true
+        loggingIn: false,
+        error: '',
       };
 
     case types.LOGIN_FAIL:
       return {
         ...state,
-        isKnown: false
+        loggingIn: false
       };
 
     case types.GET_BOOKS_TRY:

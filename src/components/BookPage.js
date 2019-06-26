@@ -19,6 +19,10 @@ const StyledInfo = styled.div`
   font-size: 1.5em;
   letter-spacing: -1px;
   word-spacing: -2px;
+
+  span {
+      display: block;
+  }
 `;
 
 class BookPage extends React.Component {
@@ -39,11 +43,11 @@ class BookPage extends React.Component {
         </div>
         <StyledInfo>
           <ul>
-            <li>Title: {title}</li>
-            <li>Year: {year}</li>
-            <li>Description: {description}</li>
-            <li>Rating: {average}</li>
-            <li>Publisher: {publisher}</li>
+            <li>Title <span>{title}</span></li>
+            <li>{year}</li>
+            <li>Description <span>{description}</span></li>
+            <li>Rating <span>{average}</span></li>
+            <li>Publisher <span>{publisher}</span></li>
           </ul>
         </StyledInfo>
       </StyledDiv>

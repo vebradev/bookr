@@ -34,7 +34,7 @@ class Nav extends React.Component {
   render() {
     return (
       <StyledNav>
-        <NavLink to={"/home"} activeClassName="active">
+        <NavLink to={"/"} activeClassName="active">
           Home
         </NavLink>
 

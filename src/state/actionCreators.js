@@ -4,12 +4,15 @@ import * as types from "./actionTypes";
 
 export const login = (username, password) => dispatch => {
   dispatch({ type: types.LOGIN_TRY });
-  axios
+  return axios
     .post("https://lambda-bookr.herokuapp.com/api/auth/login", {
       username,
       password
     })
     .then(res => {
+      console.log("set token");
+      localStorage.setItem("token", res.data.token);
+      console.log(localStorage.getItem("token"));
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.data.token });
     })
     .catch(err => {
