@@ -20,6 +20,8 @@ class SingleBook extends React.Component {
     return (
       <div>
           {this.props.gettingBooks && <StyledLoader><Loader type="ThreeDots" color="#064acb" height="40" width="80" /></StyledLoader>}
+        {book.title}
+
       </div>
     );
   }
