@@ -61,7 +61,6 @@ class Register extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("MSTP", state);
   return {
     loggingIn: state.loggingIn,
     error: state.error

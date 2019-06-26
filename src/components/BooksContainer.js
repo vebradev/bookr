@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import styled from "styled-components";
-import { getBooks } from "../state/actionCreators";
+import { getBooks, getReviews } from "../state/actionCreators";
 import Book from "./Book";
 
 const StyledDiv = styled.div`
@@ -17,6 +17,7 @@ const StyledDiv = styled.div`
 class BooksContainer extends React.Component {
   componentDidMount = () => {
     this.props.getBooks();
+    this.props.getReviews();
   };
 
   render() {
@@ -27,7 +28,7 @@ class BooksContainer extends React.Component {
     return (
       <StyledDiv>
         {books.map(book => (
-          <Book book={book} key={book.id} />
+          <Book book={book} key={book.id} reviews={this.props.reviews}/>
         ))}
       </StyledDiv>
     );
@@ -36,7 +37,9 @@ class BooksContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    books: state.mainReducer.books
+    books: state.mainReducer.books,
+    gettingBooks: state.mainReducer.gettingBooks,
+    reviews: state.mainReducer.reviews
   };
 };
 
@@ -44,6 +47,7 @@ const matchDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       getBooks,
+      getReviews
     },
     dispatch
   );

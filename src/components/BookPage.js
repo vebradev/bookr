@@ -10,7 +10,8 @@ class BookPage extends React.Component {
       description,
       average,
       publisher
-    } = this.props.location.bookProps.book;
+    } = this.props.location.props.book;
+
     return (
       <StyledDiv>
         <div>
@@ -25,6 +26,11 @@ class BookPage extends React.Component {
             <li>Publisher <span>{publisher}</span></li>
           </ul>
         </StyledInfo>
+        <div>
+          {this.props.location.props.reviews.map(review => (
+            <h2>review</h2>
+          ))}
+        </div>
       </StyledDiv>
     );
   }

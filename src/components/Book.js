@@ -11,8 +11,9 @@ class Book extends React.Component {
         <StyledLink
           to={{
             pathname: `book/${id}`,
-            bookProps: {
-              book: this.props.book
+            props: {
+              book: this.props.book,
+              reviews: this.props.reviews
             }
           }}
         >
