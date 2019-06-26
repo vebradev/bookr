@@ -1,11 +1,11 @@
 import * as types from "./actionTypes";
 
 const initialState = {
-  loggingIn: false,
   books: [],
-  isKnown: false,
-  error: "",
-  gettingBooks: false
+  loggingIn: false,
+  gettingBooks: false,
+  deletingBooks: false,
+  error: ""
 };
 
 export const mainReducer = (state = initialState, action) => {
@@ -13,15 +13,15 @@ export const mainReducer = (state = initialState, action) => {
     case types.LOGIN_TRY:
       return {
         ...state,
-        error: '',
-        loggingIn: true
+        error: "",
+        loggingIn: false
       };
 
     case types.LOGIN_SUCCESS:
       return {
         ...state,
-        loggingIn: false,
-        error: '',
+        loggingIn: true,
+        error: ""
       };
 
     case types.LOGIN_FAIL:
@@ -30,6 +30,18 @@ export const mainReducer = (state = initialState, action) => {
         loggingIn: false
       };
 
+    case types.LOGOUT:
+      return {
+        ...state,
+        loggingIn: false
+      }
+    
+    case types.FIND_TOKEN:
+      return {
+        ...state,
+        loggingIn: true
+      }
+      
     case types.GET_BOOKS_TRY:
       return {
         ...state,
@@ -47,9 +59,29 @@ export const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         gettingBooks: false,
-        error: action.payload,
-      }
+        error: action.payload
+      };
 
+    case types.DELETE_BOOK_TRY:
+      return {
+        ...state,
+        deletingBooks: true,
+        error: action.payload
+      };
+
+    case types.DELETE_BOOK_SUCCESS:
+      return {
+        ...state,
+        deletingBooks: false,
+        error: ""
+      };
+
+    case types.DELETE_BOOK_FAIL:
+      return {
+        ...state,
+        deletingBooks: false,
+        error: action.payload
+      };
     default:
       return state;
   }

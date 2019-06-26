@@ -1,34 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px;
-  background-color: #fff;
-  display: flex;
-  flex-direction: row;
-`;
-
-const StyledCover = styled.img``;
-
-const StyledInfo = styled.div`
-  margin: 0 0 0 40px;
-  padding: 40px 0 0 0;
-  font-family: "Roboto Mono", monospace;
-  font-size: 1.5em;
-  letter-spacing: -1px;
-  word-spacing: -2px;
-
-  span {
-      display: block;
-  }
-`;
-
 class BookPage extends React.Component {
   render() {
     const {
-      id,
       cover_url,
       title,
       year,
@@ -56,3 +31,25 @@ class BookPage extends React.Component {
 }
 
 export default BookPage;
+
+const StyledDiv = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+`;
+
+const StyledInfo = styled.div`
+  margin: 0 0 0 40px;
+  padding: 40px 0 0 0;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5em;
+  letter-spacing: -1px;
+  word-spacing: -2px;
+
+  span {
+      display: block;
+  }
+`;

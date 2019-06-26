@@ -1,9 +1,19 @@
+export const REGISTER_TRY = "REGISTER_TRY";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+
 export const LOGIN_TRY = "LOGIN_TRY";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
-export const SET_TOKEN = 'SET_TOKEN';
+export const LOGOUT = "LOGOUT";
+
+export const FIND_TOKEN = "FIND_TOKEN";
 
 export const GET_BOOKS_TRY = "GET_BOOKS_TRY";
 export const GET_BOOKS_SUCCESS = "GET_BOOKS_SUCCESS";
 export const GET_BOOKS_FAIL = "GET_BOOKS_FAIL";
+
+export const DELETE_BOOK_TRY = "DELETE_BOOK_TRY";
+export const DELETE_BOOK_SUCCESS = "DELETE_BOOK_SUCCESS";
+export const DELETE_BOOK_FAIL = "DELETE_BOOK_FAIL";

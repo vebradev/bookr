@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -6,26 +7,31 @@ class Book extends React.Component {
   render() {
     const { id, cover_url, title, year, average } = this.props.book;
     return (
-      <StyledLink
-        to={{
-          pathname: `book/${id}`,
-          bookProps: {
-            book: this.props.book
-          }
-        }}
-      >
-        <StyledDiv>
-          <StyledImg src={cover_url} alt={title} />
-          <span className="title">{title}</span>
-          <span className="year">{year}</span>
-          <span className="rating">Rating: {average}</span>
-        </StyledDiv>
-      </StyledLink>
+      <>
+        <StyledLink
+          to={{
+            pathname: `book/${id}`,
+            bookProps: {
+              book: this.props.book
+            }
+          }}
+        >
+          <StyledDiv>
+            <StyledImg src={cover_url} alt={title} />
+            <span className="title">{title}</span>
+            <span className="year">{year}</span>
+            <span className="rating">Rating: {average}</span>
+          </StyledDiv>
+        </StyledLink>
+      </>
     );
   }
 }
 
-export default Book;
+export default connect(
+  state => state,
+  { }
+)(Book);
 
 const StyledLink = styled(Link)`
   font-family: "Roboto Mono", monospace;

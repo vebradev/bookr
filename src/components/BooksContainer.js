@@ -43,7 +43,7 @@ const mapStateToProps = state => {
 const matchDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      getBooks
+      getBooks,
     },
     dispatch
   );
