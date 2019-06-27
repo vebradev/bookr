@@ -56,15 +56,13 @@ export const getBooks = () => dispatch => {
 
 export const getSingleBook = (id) => dispatch => {
   dispatch({ type: types.GET_SINGLE_TRY });
-  console.log("GET SINGLE TRY");
   axiosWithAuth()
     .get(`https://lambda-bookr.herokuapp.com/api/books/${id}`)
     .then(res => {
-      console.log("GET SINGLE SUCCESS");
+      // debugger
       dispatch({ type: types.GET_SINGLE_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log("GET SINGLE FAIL");
       dispatch({ type: types.GET_SINGLE_FAIL, payload: err.message })
     })
 }
