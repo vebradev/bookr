@@ -7,7 +7,7 @@ const initialState = {
   loggingIn: false,
   gettingBooks: false,
   gettingReviews: false,
-  deletingBooks: false,
+  postingReview: false,
   error: ""
 };
 
@@ -61,6 +61,24 @@ export const mainReducer = (state = initialState, action) => {
         error: action.payload
       };
 
+    case types.GET_REVIEWS_TRY:
+      return {
+        ...state,
+        gettingReviews: true
+      };
+    case types.GET_REVIEWS_SUCCESS:
+      return {
+        ...state,
+        reviews: action.payload,
+        gettingReviews: false
+      };
+    case types.GET_REVIEWS_FAIL:
+      return {
+        ...state,
+        gettingReviews: false,
+        error: action.payload
+      };
+
     case types.GET_SINGLE_TRY:
       return {
         ...state,
@@ -78,26 +96,22 @@ export const mainReducer = (state = initialState, action) => {
         error: action.payload
       };
 
-    case types.GET_REVIEWS_TRY:
+    case types.POST_REVIEW_TRY:
       return {
         ...state,
-        gettingReviews: true,
-        error: ""
+        postingReview: true
       };
-    case types.GET_REVIEWS_SUCCESS:
+    case types.POST_REVIEW_SUCCESS:
       return {
         ...state,
-        gettingReviews: false,
-        reviews: action.payload,
-        error: ""
+        postingReview: false
       };
-    case types.GET_REVIEWS_FAIL:
+    case types.POST_REVIEW_FAIL:
       return {
         ...state,
-        gettingReviews: false,
+        postingReview: false,
         error: action.payload
       };
-
     default:
       return state;
   }

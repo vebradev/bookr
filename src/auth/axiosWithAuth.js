@@ -7,7 +7,7 @@ export default () => {
   const instance = axios.create({
     headers: {
       "Content-Type": "application/json",
-      Authorization: token
+      "Authorization": token
     }
   });
   return instance;

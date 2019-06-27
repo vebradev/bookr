@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import StarRatings from "react-star-ratings";
 
 class Book extends React.Component {
   render() {
@@ -21,7 +22,15 @@ class Book extends React.Component {
             <StyledImg src={cover_url} alt={title} />
             <span className="title">{title}</span>
             <span className="year">{year}</span>
-            <span className="rating">Rating: {average}</span>
+            <span className="rating">
+              <StarRatings
+                rating={average}
+                starRatedColor="#6927FF"
+                starEmptyColor="#FFD527"
+                numberOfStars={5}
+                name="rating"
+              />
+            </span>
           </StyledDiv>
         </StyledLink>
       </>
@@ -31,7 +40,7 @@ class Book extends React.Component {
 
 export default connect(
   state => state,
-  { }
+  {}
 )(Book);
 
 const StyledLink = styled(Link)`

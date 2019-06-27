@@ -59,7 +59,6 @@ export const getSingleBook = (id) => dispatch => {
   axiosWithAuth()
     .get(`https://lambda-bookr.herokuapp.com/api/books/${id}`)
     .then(res => {
-      // debugger
       dispatch({ type: types.GET_SINGLE_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -82,3 +81,16 @@ export const getReviews = () => dispatch => {
       dispatch({ type: types.GET_BOOKS_FAIL, payload: err.message });
     });
 };
+
+export const postReview = (reviewObj) => dispatch => {
+  dispatch({ type: types.POST_REVIEW_TRY });
+  axiosWithAuth()
+    .post("https://lambda-bookr.herokuapp.com/api/reviews/", reviewObj)
+    .then(res => {
+      dispatch({ type: types.POST_REVIEW_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: types.POST_REVIEW_FAIL, payload: err.message });
+    })
+}
