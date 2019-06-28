@@ -4,7 +4,7 @@ import { combineReducers, createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import thunk from "redux-thunk";
-
+import logger from "redux-logger";
 import * as reducers from "./state/reducers";
 import App from "./App";
 import "./index.css";
@@ -23,8 +23,7 @@ import "./index.css";
 const store = createStore(
   combineReducers(reducers),
   compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(thunk, logger)
   )
 );
 

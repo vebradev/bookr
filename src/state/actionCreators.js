@@ -54,7 +54,7 @@ export const getBooks = () => dispatch => {
     });
 };
 
-export const getSingleBook = (id) => dispatch => {
+export const getSingleBook = id => dispatch => {
   dispatch({ type: types.GET_SINGLE_TRY });
   axiosWithAuth()
     .get(`https://lambda-bookr.herokuapp.com/api/books/${id}`)
@@ -62,35 +62,42 @@ export const getSingleBook = (id) => dispatch => {
       dispatch({ type: types.GET_SINGLE_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: types.GET_SINGLE_FAIL, payload: err.message })
-    })
-}
-
-export const getReviews = () => dispatch => {
-  dispatch({ type: types.GET_REVIEWS_TRY });
-  console.log("REVIEWS TRY");
-
-  axiosWithAuth()
-    .get("https://lambda-bookr.herokuapp.com/api/reviews/")
-    .then(res => {
-      console.log("REVIEWS SUCCESS");
-      dispatch({ type: types.GET_REVIEWS_SUCCESS, payload: res.data });
-    })
-    .catch(err => {
-      console.log("REVIEWS FAIL");
-      dispatch({ type: types.GET_BOOKS_FAIL, payload: err.message });
+      dispatch({ type: types.GET_SINGLE_FAIL, payload: err.message });
     });
 };
 
-export const postReview = (reviewObj) => dispatch => {
+export const postReview = newReview => dispatch => {
   dispatch({ type: types.POST_REVIEW_TRY });
   axiosWithAuth()
-    .post("https://lambda-bookr.herokuapp.com/api/reviews/", reviewObj)
+    .post("https://lambda-bookr.herokuapp.com/api/reviews/", newReview)
     .then(res => {
       dispatch({ type: types.POST_REVIEW_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: types.POST_REVIEW_FAIL, payload: err.message });
+    });
+};
+
+export const deleteReview = id => dispatch => {
+  dispatch({ type: types.DELETE_REVIEW_TRY });
+  axiosWithAuth()
+    .delete(`https://lambda-bookr.herokuapp.com/api/reviews/${id}`)
+    .then(res => {
+      dispatch({ type: types.DELETE_REVIEW_SUCCESS, payload: id });
     })
-}
+    .catch(err => {
+      dispatch({ type: types.DELETE_REVIEW_FAIL, payload: err.message });
+    });
+};
+
+export const updateReview = (id, updatedReview) => dispatch => {
+  dispatch({ type: types.UPDATE_REVIEW_TRY });
+    axiosWithAuth()
+    .put(`https://lambda-bookr.herokuapp.com/api/reviews/${id}`, updatedReview)
+    .then(res => {
+      dispatch({ type: types.UPDATE_REVIEW_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: types.UPDATE_REVIEW_FAIL, payload: err.message });
+    });
+};
