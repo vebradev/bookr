@@ -53,7 +53,7 @@ const StyledNav = styled.nav`
   background-color: #064acb;
   border-bottom: 2px solid transparent;
   color: #fff;
-  font-family: "Roboto Mono", monospace;
+  font-family: "Roboto", sans-serif;
 
   a,
   .loginOutBtn {
