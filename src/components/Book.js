@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from "react";
 import StarRatings from "react-star-ratings";
+import { connect } from "react-redux";
+import styled from "styled-components";
 
 class Book extends React.Component {
   render() {
@@ -14,15 +14,15 @@ class Book extends React.Component {
             pathname: `book/${id}`,
             props: {
               book: this.props.book,
-              reviews: this.props.reviews
-            }
+              reviews: this.props.reviews,
+            },
           }}
         >
           <StyledThumbnail background={cover_url} />
           <StyledBookDetails>
             <span className="title">{title}</span>
             <ul>
-              {authors.map(author => {
+              {authors.map((author) => {
                 return <li key={author.id}>{author.name}</li>;
               })}
             </ul>
@@ -44,10 +44,7 @@ class Book extends React.Component {
   }
 }
 
-export default connect(
-  state => state,
-  {}
-)(Book);
+export default connect((state) => state, {})(Book);
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -69,7 +66,7 @@ const StyledLink = styled(Link)`
 const StyledThumbnail = styled.div`
   width: 130px;
   height: 195px;
-  background: ${props => `url(${props.background}) no-repeat top center`};
+  background: ${(props) => `url(${props.background}) no-repeat top center`};
   background-size: cover;
   border-radius: 8px;
   box-shadow: 0px 10px 23px 8px #cfcfcf;
